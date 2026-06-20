@@ -6,23 +6,27 @@ valid_answer = "abcdefghijklmnopqrstuvwxyz"
 used_letters = ["a","b","c"]
 
 random_int = random.randint(0, len(words) -1)
-guess_list = {}
-guess_list_display = []
+word_list = list(words[random_int])
+guess_list = []
 for i in words[random_int]:
-    guess_list[i] = 0
-    guess_list_display.append(0)
+    guess_list.append(0)
 
 def choose_letter():
     print("Choose a letter a-z")
-    letter = input()
+    letter = str(input())
     while letter not in valid_answer:
         print("You didn't choose a letter, choose gain.")
-        letter = input()
+        letter = str(input())
     return letter
 
 
 
 while playing:
     print(f"Current solve: {guess_list_display}")
-    game()
+    letter = game()
+
+    if letter in words[random_int]:
+        position = word_list.index(letter)
+        guess_list[position] = letter
+
     playing = False
