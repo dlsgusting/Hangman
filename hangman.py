@@ -22,11 +22,13 @@ def choose_letter():
 
 
 while playing:
-    print(f"Current solve: {guess_list_display}")
-    letter = game()
+    print(f"Current solve: {guess_list}")
+    letter = choose_letter()
 
     if letter in words[random_int]:
+        print("Correct!")
         position = word_list.index(letter)
         guess_list[position] = letter
-
-    playing = False
+    else:
+        print("Wrong")
+        used_letters.append(letter)
