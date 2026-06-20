@@ -27,8 +27,9 @@ while playing:
 
     if letter in words[random_int]:
         print("Correct!")
-        position = word_list.index(letter)
-        guess_list[position] = letter
+        for index, let in enumerate(words[random_int]):
+            if letter == let:
+                guess_list[index] = letter
     else:
         print("Wrong")
         used_letters.append(letter)
